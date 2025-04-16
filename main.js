@@ -35,7 +35,7 @@ fetch("pokemon.json")
             <div class="type-container">
                 ${pokemon.types.map(type => `<span class="type-badge">${type}</span>`).join('')}
             </div>
-            <p>Ability: ${formatAbilities(pokemon.abilities)}</p>
+            ${abilityHTML}
             <p>Height: ${pokemon.heightm} m</p>
             <p>Weight: ${pokemon.weightkg} kg</p>
 
