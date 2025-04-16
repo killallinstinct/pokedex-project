@@ -1,0 +1,18 @@
+[
+    {
+        "id": 901,
+        "name": "Ursaluna",
+        "types": ["Ground", "Normal"],
+        "height": 2.4,
+        "weight": 290.0,
+        "stats": {
+            "hp": 130,
+            "atk": 140,
+            "def": 105,
+            "spa": 45,
+            "spd": 80,
+            "spe": 50
+        },
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/901.png"
+    }
+]
