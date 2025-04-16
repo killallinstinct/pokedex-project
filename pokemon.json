@@ -5,7 +5,7 @@
         "types": ["Ground", "Normal"],
         "height": 2.4,
         "weight": 290.0,
-        "stats": {
+        "baseStats": {
             "hp": 130,
             "atk": 140,
             "def": 105,
