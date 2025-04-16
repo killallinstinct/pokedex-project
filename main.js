@@ -22,7 +22,7 @@ fetch("pokemon.json")
             <p>Sp. Attack: ${pokemon.stats.spa}</p>
             <p>Sp. Defense: ${pokemon.stats.spd}</p>
             <p>Speed: ${pokemon.stats.spe}</p>
-            <p><strong>BST: ${pokemon.bst}</strong></p>
+            <p><strong>Total: ${pokemon.bst}</strong></p>
             `;
             container.appendChild(card);
         });
