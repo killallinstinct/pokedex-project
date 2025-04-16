@@ -9,6 +9,9 @@ fetch("pokemon.json")
             // Calculate and store the BST on the object
             const bst = calculateBST(pokemon.baseStats);
 
+            // Display bool for the abilities on the object
+            const abilityHTML = formatAbilities(pokemon.abilities);
+
             // Displays pokemon data in form of a card
             const card = document.createElement("div");
             card.className = "pokemon-card";
@@ -16,7 +19,7 @@ fetch("pokemon.json")
             <img src="${pokemon.sprite}" alt="${pokemon.name}" />
             <h2>${pokemon.name} (${pokemon.num})</h2
             <p>Type: ${pokemon.types.join(', ')}</p>
-            ${formatAbilities(pokemon.abilities)}
+            ${abilityHTML}
             <p>Height: ${pokemon.heightm} m</p>
             <p>Weight: ${pokemon.weightkg} kg</p>
             <p>HP: ${pokemon.baseStats.hp}</p>

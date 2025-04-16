@@ -1,9 +1,9 @@
-export function calculateBST(stats) {
-    return Object.values(stats).reduce((total, stat) => total + stat, 0);
+export function calculateBST(baseStats) {
+    return Object.values(baseStats).reduce((total, stat) => total + stat, 0);
 }
-export function formatAbilities(pokemon) {
-    const entries = Object.entries(abilitiesObj);
-    const label = Object.entries(abilitiesObj);
+export function formatAbilities(abilities) {
+    const entries = Object.entries(abilities);
+    const label = Object.entries > 1 ? "Abilities" : "Ability";
 
     const formatted = entries
         .map(([key, ability]) =>
