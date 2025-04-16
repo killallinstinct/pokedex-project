@@ -19,13 +19,13 @@ fetch("pokemon.json")
             ${formatAbilities(pokemon.abilities)}
             <p>Height: ${pokemon.heightm} m</p>
             <p>Weight: ${pokemon.weightkg} kg</p>
-            <p>HP: ${pokemon.stats.hp}</p>
-            <p>Attack: ${pokemon.stats.atk}</p>
-            <p>Defense: ${pokemon.stats.def}</p>
-            <p>Sp. Attack: ${pokemon.stats.spa}</p>
-            <p>Sp. Defense: ${pokemon.stats.spd}</p>
-            <p>Speed: ${pokemon.stats.spe}</p>
-            <p><strong>Total: ${pokemon.bst}</strong></p>
+            <p>HP: ${pokemon.baseStats.hp}</p>
+            <p>Attack: ${pokemon.baseStats.atk}</p>
+            <p>Defense: ${pokemon.baseStats.def}</p>
+            <p>Sp. Attack: ${pokemon.baseStats.spa}</p>
+            <p>Sp. Defense: ${pokemon.baseStats.spd}</p>
+            <p>Speed: ${pokemon.baseStats.spe}</p>
+            <p><strong>Total: ${bst}</strong></p>
             `;
             container.appendChild(card);
         });
