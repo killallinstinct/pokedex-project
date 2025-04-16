@@ -1,4 +1,4 @@
-fetch('./pokemon.json')
+fetch("pokemon.json")
     .then((res) => res.json())
     .then((pokemonList) => {
         const container = document.getElementById("pokedex");
