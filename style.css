@@ -13,3 +13,17 @@ body {
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
     width: 200px;
 }
+
+.stat-bar-container {
+    background-color: #eee;
+    border-radius: 5px;
+    height: 10px;
+    margin-bottom: 4px;
+    overflow: hidden;
+}
+
+stat-bar {
+    height: 100%;
+    background-color: #4CAF50;
+    transition: width 0.3s ease-in-out;
+}
