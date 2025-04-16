@@ -22,7 +22,7 @@ body {
     overflow: hidden;
 }
 
-stat-bar {
+.stat-bar {
     height: 100%;
     background-color: #4CAF50;
     transition: width 0.3s ease-in-out;
