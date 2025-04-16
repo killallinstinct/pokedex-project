@@ -9,7 +9,7 @@ fetch("pokemon.json")
             card.innerHTML = `
             <img src="${pokemon.sprite}" alt="${pokemon.name}" />
             <h2>${pokemon.name} (${pokemon.id})</h2
-            <p>Type: $${pokemon.types.join(', ')}</p>
+            <p>Type: ${pokemon.types.join(', ')}</p>
             <p>HP: ${pokemon.stats.hp}</p>
             <p>Attack: ${pokemon.stats.atk}</p>
             <p>Defense: ${pokemon.stats.def}</p>
