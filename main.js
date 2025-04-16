@@ -1,4 +1,4 @@
-import { calculateBST, formatAbilities } from "./utils";
+import { calculateBST, formatAbilities } from "./utils.js";
 
 fetch("pokemon.json")
     .then((res) => res.json())
