@@ -1,10 +1,33 @@
 [
     {
-        "id": 901,
+        "num": 184,
+        "name": "Azumarill",
+        "id": "ursaluna",
+        "types": ["Water", "Fairy"],
+        "heightm": 0.8,
+        "weightkg": 28.5,
+        "baseStats": {
+            "hp": 100,
+            "atk": 50,
+            "def": 80,
+            "spa": 50,
+            "spd": 80,
+            "spe": 50
+        },
+        "abilities": {
+            "0": "Thick Fat",
+            "1": "Huge Power",
+            "H": "Sap Sipper"
+        },
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/184.png"
+    },
+    {
+        "num": 901,
         "name": "Ursaluna",
+        "id": "ursaluna",
         "types": ["Ground", "Normal"],
-        "height": 2.4,
-        "weight": 290.0,
+        "heightm": 2.4,
+        "weightkg": 290.0,
         "baseStats": {
             "hp": 130,
             "atk": 140,
@@ -12,6 +35,11 @@
             "spa": 45,
             "spd": 80,
             "spe": 50
+        },
+        "abilities": {
+            "0": "Guts",
+            "1": "Bulletproof",
+            "H": "Unnerve"
         },
         "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/901.png"
     }

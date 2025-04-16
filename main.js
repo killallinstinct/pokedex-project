@@ -1,4 +1,4 @@
-import { calculateBST } from "./utils";
+import { calculateBST, displayAbilities } from "./utils";
 
 fetch("pokemon.json")
     .then((res) => res.json())
@@ -14,8 +14,11 @@ fetch("pokemon.json")
             card.className = "pokemon-card";
             card.innerHTML = `
             <img src="${pokemon.sprite}" alt="${pokemon.name}" />
-            <h2>${pokemon.name} (${pokemon.id})</h2
+            <h2>${pokemon.name} (${pokemon.num})</h2
             <p>Type: ${pokemon.types.join(', ')}</p>
+            ${formatAbilities(pokemon.abilities)}
+            <p>Height: ${pokemon.heightm} m</p>
+            <p>Weight: ${pokemon.weightkg} kg</p>
             <p>HP: ${pokemon.stats.hp}</p>
             <p>Attack: ${pokemon.stats.atk}</p>
             <p>Defense: ${pokemon.stats.def}</p>
