@@ -129,6 +129,35 @@ ul {
 .stat-spd   { background-color: #6890f0; }  /* blue */
 .stat-spe   { background-color: #a040a0; }  /* purple */
 
+.abilities-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.ability-card {
+    background-color: #eee;
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    min-width: 100px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+.hidden-ability {
+    background-color: #ccc;
+    color: black;
+}
+
+.details-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
 #pokedex {
     display: flex;
     flex-wrap: wrap;

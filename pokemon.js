@@ -37,22 +37,26 @@ async function displayPokemon() {
         );
 
         container.innerHTML = `
-            <img src="${pokemon.sprites.other['official-artwork'].front_default}" alt="${pokemon.name}" width="200" />
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png" alt="${pokemon.name}" />
             
             <h3>Type</h3>
             <p>${pokemon.types.map(t => t.type.name).join(' / ')}</p>
             
-            <h3>Abilities<h/3>
-            <ul>
-                ${pokemon.abilities.map(a => `<li>${a.ability.name}${a.is_hidden ? ' (Hidden Ability)' : ''}</li>`).join('')}
-            </ul>
+            <h3>Abilities</h3>
+            <div class ="abilities-grid">
+                ${pokemon.abilities.map(a => 
+                    `<div class="ability-card ${a.ability.name}${a.is_hidden ? 'hidden-ability' : ''}">
+                        ${a.ability.name}${a.is_hidden ? ' (Hidden Ability)' : ''}
+                    </div>
+                `).join('')}
+            </div>
             
             <h3>Height / Weight</h3>
             <p>Height: ${(pokemon.height / 10).toFixed(1)} m</p>
             <p>Weight: ${(pokemon.weight / 10).toFixed(1)} kg</p>
             
             <h3>Base Stats</h3>
-            <u1>
+            <ul>
                 ${pokemon.stats.map(s => `<li>${s.stat.name.toUpperCase()}: ${s.base_stat}</li>`).join('')}
             </ul>
 
