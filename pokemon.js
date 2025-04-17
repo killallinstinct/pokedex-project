@@ -57,7 +57,7 @@ async function displayPokemon() {
             </ul>
 
             <h3>Flavor Text</h3>
-            <p>${flavorEntry ? flavorEntry.flavor_text_replace(/\f|\n/g, ' ') : "No description available."}</p>
+            <p>${flavorEntry ? flavorEntry.flavor_text.replace(/\f|\n/g, ' ') : "No description available."}</p>
         `;
     }
     catch (error) {
