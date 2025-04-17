@@ -3,7 +3,7 @@ export function calculateBST(baseStats) {
 }
 export function formatAbilities(abilities) {
     const entries = Object.entries(abilities);
-    const label = Object.entries > 1 ? "Abilities" : "Ability";
+    const label = entries.length > 1 ? "Abilities" : "Ability";
 
     const formatted = entries
         .map(([key, ability]) =>
