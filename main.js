@@ -1,4 +1,4 @@
-import { calculateBST, formatAbilities } from "./utils.js";
+import { calculateBST, formatAbilities, abilityLabel } from "./utils.js";
 import { typeColors } from "./typeColors.js";
 import { renderTypeBadges } from "./renderTypeBadges.js";
 
@@ -56,7 +56,7 @@ fetch("pokemon.json")
                 </div>
 
                 <div class="infobox-section">
-                <div class="infobox-subtitle">Abilities</div>
+                <div class="infobox-subtitle">${abilityLabel(pokemon.abilities)}</div>
                 ${Object.entries(pokemon.abilities).map(([key, ability]) => {
                     if (key === "H") {
                     return `<div class="data-pair"><span>${ability}</span><span style="font-size: 11px; color: #666;">(Hidden Ability)</span></div>`;

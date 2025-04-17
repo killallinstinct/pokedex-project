@@ -3,7 +3,7 @@ export function calculateBST(baseStats) {
 }
 export function formatAbilities(abilities) {
     const entries = Object.entries(abilities);
-    const label = entries.length > 1 ? "Abilities" : "Ability";
+    const label = abilityLabel(abilities);
 
     const formatted = `
         <div class="abilities-grid">
@@ -21,4 +21,9 @@ export function formatAbilities(abilities) {
         <div class="section-title">${label}</div>
         <div class="info-section">${formatted}</div>
         `;
+}
+
+export function abilityLabel(abilities) {
+    const abilityCount = Object.values(abilities).filter(Boolean).length;
+    return abilityCount > 1 ? "Abilities" : "Ability";
 }
