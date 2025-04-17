@@ -31,10 +31,20 @@ fetch("pokemon.json")
             card.innerHTML = `
             <img src="${pokemon.sprite}" alt="${pokemon.name}" />
             <h2>${pokemon.name} (${pokemon.num})</h2>
-            ${typeHTML}
+
+            <div class="info-section">
+                ${typeHTML}
+            </div>
+
+            <div class="info-section">
             ${abilityHTML}
-            <p>Height: ${pokemon.heightm} m</p>
-            <p>Weight: ${pokemon.weightkg} kg</p>
+            </div>
+
+            <div class="info-section">
+                <p>Height: ${pokemon.heightm} m</p>
+                <p>Weight: ${pokemon.weightkg} kg</p>
+            </div>
+            
 
             <table class="stats-table">
                 <tr>
