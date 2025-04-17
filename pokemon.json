@@ -1,24 +1,46 @@
 [
     {
+        "num": 1,
+        "name": "Bulbasaur",
+        "id": "bulbasaur",
+        "types": ["Grass", "Poison"],
+        "heightm": 0.7,
+        "weightkg": 6.9,
+        "baseStats" : {"hp": 45, "atk": 49, "def": 49, "spa": 65, "spd": 65, "spe": 45},
+        "abilities": {"0": "Overgrow", "H": "Chlorophyll"},
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
+    },
+    {
+        "num": 4,
+        "name": "Charmander",
+        "id": "charmander",
+        "types": ["Fire"],
+        "heightm": 0.7,
+        "weightkg": 8.5,
+        "baseStats" : {"hp": 39, "atk": 52, "def": 43, "spa": 60, "spd": 50, "spe": 65},
+        "abilities": {"0": "Blaze", "H": "Solar Power"},
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"
+    },
+    {
+        "num": 7,
+        "name": "Squirtle",
+        "id": "squirtle",
+        "types": ["Water"],
+        "heightm": 0.5,
+        "weightkg": 9,
+        "baseStats" : {"hp": 44, "atk": 48, "def": 65, "spa": 50, "spd": 64, "spe": 43},
+        "abilities": {"0": "Torrent", "H": "Rain Dish"},
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png"
+    },
+    {
         "num": 184,
         "name": "Azumarill",
         "id": "azumarill",
         "types": ["Water", "Fairy"],
         "heightm": 0.8,
         "weightkg": 28.5,
-        "baseStats": {
-            "hp": 100,
-            "atk": 50,
-            "def": 80,
-            "spa": 50,
-            "spd": 80,
-            "spe": 50
-        },
-        "abilities": {
-            "0": "Thick Fat",
-            "1": "Huge Power",
-            "H": "Sap Sipper"
-        },
+        "baseStats": {"hp": 100, "atk": 50, "def": 80, "spa": 50, "spd": 80, "spe": 50},
+        "abilities": {"0": "Thick Fat", "1": "Huge Power", "H": "Sap Sipper"},
         "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/184.png"
     },
     {
@@ -28,19 +50,8 @@
         "types": ["Ground", "Normal"],
         "heightm": 2.4,
         "weightkg": 290.0,
-        "baseStats": {
-            "hp": 130,
-            "atk": 140,
-            "def": 105,
-            "spa": 45,
-            "spd": 80,
-            "spe": 50
-        },
-        "abilities": {
-            "0": "Guts",
-            "1": "Bulletproof",
-            "H": "Unnerve"
-        },
+        "baseStats": {"hp": 130,"atk": 140,"def": 105,"spa": 45,"spd": 80,"spe": 50},
+        "abilities": {"0": "Guts", "1": "Bulletproof", "H": "Unnerve"},
         "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/901.png"
     }
 ]

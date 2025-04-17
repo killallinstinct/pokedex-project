@@ -37,7 +37,7 @@ fetch("pokemon.json")
             card.innerHTML = `
             <div class="infobox">
                 <div class="infobox-header" style="${headerStyle}">
-                ${pokemon.name} (#${pokemon.num})
+                ${pokemon.name} (#${pokemon.num.toString().padStart(4, '0')})
                 </div>
 
                 <div class="infobox-image">
