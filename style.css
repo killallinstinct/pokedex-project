@@ -4,20 +4,23 @@ body {
     display: flex;
     justify-content: center;
     padding: 2rem;
-  }
+}
 
-  .infobox {
+.infobox {
     background-color: #f8f8f8;
     border: 1px solid #aaa;
     border-radius: 10px;
     padding: 0;
-    width: 300px;
+    width: 320px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
     font-size: 14px;
     line-height: 1.5;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  }
+}
 
-  .infobox-header {
+.infobox-header {
     background-color: #a3c3f3;
     color: black;
     text-align: center;
@@ -25,56 +28,92 @@ body {
     padding: 0.5em;
     border-radius: 10px 10px 0 0;
     border-bottom: 1px solid #aaa;
-  }
+}
 
-  .infobox-section {
+.infobox-section {
     padding: 0.5em 0.75em;
     border-top: 1px solid #ddd;
-  }
+}
 
-  .infobox-subtitle {
+.infobox-subtitle {
     font-weight: bold;
     background-color: #dbeaff;
     text-align: center;
     padding: 0.3em;
     border-radius: 6px;
     margin-bottom: 0.4em;
-  }
+}
 
-  .infobox-image {
+.infobox-image {
     text-align: center;
     padding: 1em 0;
-  }
+}
 
-  .infobox-image img {
+.infobox-image img {
     max-width: 100%;
-  }
+}
 
-  .type-badges {
-    display: flex;
-    justify-content: center;
-    gap: 5px;
-  }
-
-  .type-badge {
-    background-color: #6890F0;
-    color: white;
+.type-badge {
+    display: inline-block;
+    margin: 2px;
     padding: 2px 8px;
-    border-radius: 6px;
-    font-weight: bold;
+    border-radius: 8px;
     font-size: 12px;
-  }
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+}
 
-  .type-badge.fairy {
-    background-color: #EE99AC;
-  }
-
-  .data-pair {
+.data-pair {
     display: flex;
     justify-content: space-between;
     margin-bottom: 0.3em;
-  }
+}
 
-  .data-pair span:first-child {
+.data-pair span:first-child {
     font-weight: bold;
-  }
+}
+
+.stats-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.stats-table td {
+    padding: 4px;
+    font-size: 14px;
+}
+
+.stat-label {
+    font-weight: bold;
+    width: 80px;
+}
+
+.stat-bar-container {
+    background-color: #eee;
+    border-radius: 5px;
+    height: 10px;
+    width: 100px;
+    overflow: hidden;
+}
+
+.stat-bar {
+    height: 100%;
+    transition: width 0.3s ease-in-out;
+}
+
+.stat-hp    { background-color: #c03028; }  /* red */
+.stat-atk   { background-color: #f08030; }  /* orange */
+.stat-def   { background-color: #f8d030; }  /* yellow */
+.stat-spa   { background-color: #78c850; }  /* green */
+.stat-spd   { background-color: #6890f0; }  /* blue */
+.stat-spe   { background-color: #a040a0; }  /* purple */
+
+#pokedex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}

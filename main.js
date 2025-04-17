@@ -47,7 +47,11 @@ fetch("pokemon.json")
                 <div class="infobox-section">
                 <div class="infobox-subtitle">Type</div>
                 <div class="type-badges">
-                    ${pokemon.types.map(type => `<span class="type-badge ${type.toLowerCase()}">${type}</span>`).join("")}
+                    ${pokemon.types.map(type => `
+                        <span class="type-badge" style="background-color: ${typeColors[type]};">
+                        ${type}
+                        </span>
+                    `).join("")}
                 </div>
                 </div>
 
