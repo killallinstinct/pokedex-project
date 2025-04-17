@@ -36,73 +36,54 @@ fetch("pokemon.json")
             // Displays pokemon data in form of a card
             card.innerHTML = `
             <div class="infobox">
-                <img src="${pokemon.sprite}" alt="${pokemon.name}" />
-                <h2 class="infobox-header" style="${headerStyle}">${pokemon.name} (#${pokemon.num})</h2>
+                <div class="infobox-header" style="${headerStyle}">
+                ${pokemon.name} (#${pokemon.num})
+                </div>
 
-                ${typeHTML}
+                <div class="infobox-image">
+                <img src="${pokemon.sprite}" alt="${pokemon.name}">
+                </div>
 
-                <div class="infobox-row"><strong>Height:</strong> ${pokemon.heightm} m</div>
-                <div class="infobox-row"><strong>Weight:</strong> ${pokemon.weightkg} kg</div>
+                <div class="infobox-section">
+                <div class="infobox-subtitle">Type</div>
+                <div class="type-badges">
+                    ${pokemon.types.map(type => `<span class="type-badge ${type.toLowerCase()}">${type}</span>`).join("")}
+                </div>
+                </div>
 
-                ${abilityHTML}
+                <div class="infobox-section">
+                <div class="infobox-subtitle">Abilities</div>
+                ${Object.entries(pokemon.abilities).map(([key, ability]) => {
+                    if (key === "H") {
+                    return `<div class="data-pair"><span>${ability}</span><span style="font-size: 11px; color: #666;">(Hidden Ability)</span></div>`;
+                    } else {
+                    return `<div class="data-pair"><span>${ability}</span><span></span></div>`;
+                    }
+                }).join("")}
+                </div>
 
+                <div class="infobox-section">
+                <div class="infobox-subtitle">Height / Weight</div>
+                <div class="data-pair"><span>Height</span><span>${pokemon.heightm} m</span></div>
+                <div class="data-pair"><span>Weight</span><span>${pokemon.weightkg} kg</span></div>
+                </div>
+
+                <div class="infobox-section">
+                <div class="infobox-subtitle">Base Stats</div>
                 <table class="stats-table">
+                    ${Object.entries(pokemon.baseStats).map(([stat, val]) => `
                     <tr>
-                        <td class="stat-label">HP</td>
-                        <td>${pokemon.baseStats.hp}</td>
+                        <td class="stat-label">${stat.toUpperCase()}</td>
+                        <td>${val}</td>
                         <td>
-                            <div class="stat-bar-container">
-                                <div class="stat-bar stat-hp" style="width: ${(pokemon.baseStats.hp / 255) * 100}%"></div>
-                            </div>
+                        <div class="stat-bar-container">
+                            <div class="stat-bar stat-${stat}" style="width: ${(val / 255) * 100}%"></div>
+                        </div>
                         </td>
-                    </tr>
-                    <tr>
-                        <td class="stat-label">Attack</td>
-                        <td>${pokemon.baseStats.atk}</td>
-                        <td>
-                            <div class="stat-bar-container">
-                                <div class="stat-bar stat-atk" style="width: ${(pokemon.baseStats.atk / 255) * 100}%"></div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="stat-label">Defense</td>
-                        <td>${pokemon.baseStats.def}</td>
-                        <td>
-                            <div class="stat-bar-container">
-                                <div class="stat-bar stat-def" style="width: ${(pokemon.baseStats.def / 255) * 100}%"></div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="stat-label">Sp. Atk</td>
-                        <td>${pokemon.baseStats.spa}</td>
-                        <td>
-                            <div class="stat-bar-container">
-                                <div class="stat-bar stat-spa" style="width: ${(pokemon.baseStats.spa / 255) * 100}%"></div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="stat-label">Sp. Def</td>
-                        <td>${pokemon.baseStats.spd}</td>
-                        <td>
-                            <div class="stat-bar-container">
-                                <div class="stat-bar stat-spd" style="width: ${(pokemon.baseStats.spd / 255) * 100}%"></div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="stat-label">Speed</td>
-                        <td>${pokemon.baseStats.spe}</td>
-                        <td>
-                            <div class="stat-bar-container">
-                                <div class="stat-bar stat-spe" style="width: ${(pokemon.baseStats.spe / 255) * 100}%"></div>
-                            </div>
-                        </td>
-                    </tr>
+                    </tr>`).join("")}
                 </table>
                 <p><strong>Total: ${bst}</strong></p>
+                </div>
             </div>
             `;
             container.appendChild(card);
