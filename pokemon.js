@@ -26,11 +26,18 @@ async function fetchSpeciesData(name) {
 async function displayPokemon() {
     try {
         const pokemon = await fetchPokemonData(pokemonID);
-        const species = await fetchSpeciesData(pokemonID);
+        const speciesName = pokemonID.includes('-') ? pokemonID.split('-')[0] : pokemonID;
+        const species = await fetchSpeciesData(speciesName);
+
+        // Correctly find the real national dex number for formes
+        const nationalDexEntry = species.pokedex_numbers.find(
+            entry => entry.pokedex.name === "national"
+        );
+        const nationalDexNumber = nationalDexEntry ? nationalDexEntry.entry_number : pokemon.id;
 
         // Fill name + number
         document.getElementById('pokemon-name').textContent = 
-            `${pokemon.name.toUpperCase()} (#${pokemon.id.toString().padStart(4, '0')})`;
+            `${formatDisplayName(pokemon)} (#${nationalDexNumber.toString().padStart(4, '0')})`;
 
         // Dynamically builds type badges
         const typeHTML = renderTypeBadges(pokemon.types);
@@ -48,39 +55,41 @@ async function displayPokemon() {
 
         container.innerHTML = `
             <div class="pokemon-card" style="background-color: ${bgColor}">
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png" alt="${pokemon.name}" />
-                
-                <h3><strong>Type</strong></h3>
-                    <div class="info-section">
-                        ${typeHTML}
-                    </div>
-                
-                <h3><strong>Abilities</strong></h3>
                 <div class="info-section">
-                    <div class ="abilities-grid">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png" alt="${pokemon.name}" />
+                </div>
+
+                <div class="info-section">
+                    <h3><strong>Type</strong></h3>
+                    ${typeHTML}
+                </div>
+
+                <div class="info-section">
+                    <h3><strong>Abilities</strong></h3>
+                    <div class="abilities-grid">
                         ${pokemon.abilities.map(a => `
                             <div class="ability-card ${a.is_hidden ? 'hidden-ability' : ''}">
-                                ${a.ability.name}${a.is_hidden ? ' (Hidden Ability)' : ''}
+                                ${capitalize(a.ability.name)}${a.is_hidden ? ' (Hidden Ability)' : ''}
                             </div>
                         `).join('')}
                     </div>
                 </div>
-                
+
                 <div class="info-section">
-                    <h3>Height / Weight</h3>
+                    <h3><strong>Height / Weight</strong></h3>
                     <p>Height: ${(pokemon.height / 10).toFixed(1)} m</p>
                     <p>Weight: ${(pokemon.weight / 10).toFixed(1)} kg</p>
                 </div>
-                
+
                 <div class="info-section">
-                    <h3>Base Stats</h3>
+                    <h3><strong>Base Stats</strong></h3>
                     <ul>
                         ${pokemon.stats.map(s => `<li>${s.stat.name.toUpperCase()}: ${s.base_stat}</li>`).join('')}
                     </ul>
                 </div>
-                
+
                 <div class="info-section">
-                    <h3>Flavor Text</h3>
+                    <h3><strong>Flavor Text</strong></h3>
                     <p>${flavorEntry ? flavorEntry.flavor_text.replace(/\f|\n/g, ' ') : "No description available."}</p>
                 </div>
             </div>
@@ -91,9 +100,27 @@ async function displayPokemon() {
         document.getElementById('pokemon-details').innerHTML = `<p>Failed to load Pokemon.</p>`;
     }
 }
+function formatDisplayName(pokemon) {
+    const parts = pokemon.name.split('-');
+    if (parts.length > 1) {
+        const baseName = parts[0];
+        const formName = parts.slice(1).join(' ');
+        return `${capitalize(baseName)} (${capitalize(formName)} Form)`;
+    }
+    else {
+        return capitalize(pokemon.name);
+    }
+}
+
+function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
 
 displayPokemon();
 
-document.getElementById('back-button').addEventListener('click', () => {
-    window.location.href = 'index.html';
-});
+const backButton = document.getElementById('back-button');
+if (backButton) {
+    backButton.addEventListener('click', () => {
+        window.location.href = 'index.html'
+    });
+}
