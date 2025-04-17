@@ -1,5 +1,6 @@
 import { calculateBST, formatAbilities } from "./utils.js";
 import { typeColors } from "./typeColors.js";
+import { renderTypeBadges } from "./renderTypeBadge.js";
 
 fetch("pokemon.json")
     .then((res) => res.json())
@@ -15,10 +16,7 @@ fetch("pokemon.json")
             const bst = calculateBST(pokemon.baseStats);
 
             // Display bool for the abilities on the object
-            const abilityLabel = pokemon.abilities.length === 1 ? "Ability" : "Abilities";
-            const abilityHTML = `
-            <p><strong>${abilityLabel}:</strong> ${formatAbilities(pokemon.abilities)}</p>;
-            `;
+            const abilityHTML = formatAbilities(pokemon.abilities);
             // Adds background color to pokemon card based 
             // on their primary type
             
@@ -26,15 +24,14 @@ fetch("pokemon.json")
             const bgColor = typeColors[primaryType] || "#777"   // fallback
             card.style.backgroundColor = bgColor;
 
-            // Adjust text color for light backgrounds
+            // Adjust type badges for formatting
+            const typeHTML = renderTypeBadges(pokemon.types);
 
             // Displays pokemon data in form of a card
             card.innerHTML = `
             <img src="${pokemon.sprite}" alt="${pokemon.name}" />
             <h2>${pokemon.name} (${pokemon.num})</h2>
-            <div class="type-container">
-                ${pokemon.types.map(type => `<span class="type-badge">${type}</span>`).join('')}
-            </div>
+            ${typeHTML}
             ${abilityHTML}
             <p>Height: ${pokemon.heightm} m</p>
             <p>Weight: ${pokemon.weightkg} kg</p>

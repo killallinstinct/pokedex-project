@@ -67,3 +67,14 @@ body {
 .stat-spa   { background-color: #78c850; }  /* green */
 .stat-spd   { background-color: #6890f0; }  /* blue */
 .stat-spe   { background-color: #a040a0; }  /* purple */
+
+.type-badge {
+    display: inline-block;
+    margin: 2px;
+    padding: 2px 8px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.4);
+}
