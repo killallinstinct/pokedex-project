@@ -1,4 +1,4 @@
-import { typeColors } from "./typeColors";
+import { typeColors } from "./typeColors.js";
 
 export function renderTypeBadges(types) {
     return `
