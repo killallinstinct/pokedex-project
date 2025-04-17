@@ -27,83 +27,83 @@ fetch("pokemon.json")
             // Adjust type badges for formatting
             const typeHTML = renderTypeBadges(pokemon.types);
 
+            // Dynamic gradient base on types
+            const type1Color = typeColors[pokemon.types[0]];
+            const type2Color = pokemon.types[1] ? typeColors[pokemon.types[1]] : type1Color;
+
+            const headerStyle = `background: linear-gradient(to right, ${type1Color}, ${type2Color});`;
+
             // Displays pokemon data in form of a card
             card.innerHTML = `
-            <img src="${pokemon.sprite}" alt="${pokemon.name}" />
-            <h2>${pokemon.name} (${pokemon.num})</h2>
+            <div class="infobox">
+                <img src="${pokemon.sprite}" alt="${pokemon.name}" />
+                <h2 class="infobox-header" style="${headerStyle}">${pokemon.name} (#${pokemon.num})</h2>
 
-            <div class="info-section">
                 ${typeHTML}
+
+                <div class="infobox-row"><strong>Height:</strong> ${pokemon.heightm} m</div>
+                <div class="infobox-row"><strong>Weight:</strong> ${pokemon.weightkg} kg</div>
+
+                ${abilityHTML}
+
+                <table class="stats-table">
+                    <tr>
+                        <td class="stat-label">HP</td>
+                        <td>${pokemon.baseStats.hp}</td>
+                        <td>
+                            <div class="stat-bar-container">
+                                <div class="stat-bar stat-hp" style="width: ${(pokemon.baseStats.hp / 255) * 100}%"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="stat-label">Attack</td>
+                        <td>${pokemon.baseStats.atk}</td>
+                        <td>
+                            <div class="stat-bar-container">
+                                <div class="stat-bar stat-atk" style="width: ${(pokemon.baseStats.atk / 255) * 100}%"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="stat-label">Defense</td>
+                        <td>${pokemon.baseStats.def}</td>
+                        <td>
+                            <div class="stat-bar-container">
+                                <div class="stat-bar stat-def" style="width: ${(pokemon.baseStats.def / 255) * 100}%"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="stat-label">Sp. Atk</td>
+                        <td>${pokemon.baseStats.spa}</td>
+                        <td>
+                            <div class="stat-bar-container">
+                                <div class="stat-bar stat-spa" style="width: ${(pokemon.baseStats.spa / 255) * 100}%"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="stat-label">Sp. Def</td>
+                        <td>${pokemon.baseStats.spd}</td>
+                        <td>
+                            <div class="stat-bar-container">
+                                <div class="stat-bar stat-spd" style="width: ${(pokemon.baseStats.spd / 255) * 100}%"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="stat-label">Speed</td>
+                        <td>${pokemon.baseStats.spe}</td>
+                        <td>
+                            <div class="stat-bar-container">
+                                <div class="stat-bar stat-spe" style="width: ${(pokemon.baseStats.spe / 255) * 100}%"></div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <p><strong>Total: ${bst}</strong></p>
             </div>
-
-            <div class="info-section">
-            ${abilityHTML}
-            </div>
-
-            <div class="info-section">
-                <p>Height: ${pokemon.heightm} m</p>
-                <p>Weight: ${pokemon.weightkg} kg</p>
-            </div>
-            
-
-            <table class="stats-table">
-                <tr>
-                    <td class="stat-label">HP</td>
-                    <td>${pokemon.baseStats.hp}</td>
-                    <td>
-                        <div class="stat-bar-container">
-                            <div class="stat-bar stat-hp" style="width: ${(pokemon.baseStats.hp / 255) * 100}%"></div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="stat-label">Attack</td>
-                    <td>${pokemon.baseStats.atk}</td>
-                    <td>
-                        <div class="stat-bar-container">
-                            <div class="stat-bar stat-atk" style="width: ${(pokemon.baseStats.atk / 255) * 100}%"></div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="stat-label">Defense</td>
-                    <td>${pokemon.baseStats.def}</td>
-                    <td>
-                        <div class="stat-bar-container">
-                            <div class="stat-bar stat-def" style="width: ${(pokemon.baseStats.def / 255) * 100}%"></div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="stat-label">Sp. Atk</td>
-                    <td>${pokemon.baseStats.spa}</td>
-                    <td>
-                        <div class="stat-bar-container">
-                            <div class="stat-bar stat-spa" style="width: ${(pokemon.baseStats.spa / 255) * 100}%"></div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="stat-label">Sp. Def</td>
-                    <td>${pokemon.baseStats.spd}</td>
-                    <td>
-                        <div class="stat-bar-container">
-                            <div class="stat-bar stat-spd" style="width: ${(pokemon.baseStats.spd / 255) * 100}%"></div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="stat-label">Speed</td>
-                    <td>${pokemon.baseStats.spe}</td>
-                    <td>
-                        <div class="stat-bar-container">
-                            <div class="stat-bar stat-spe" style="width: ${(pokemon.baseStats.spe / 255) * 100}%"></div>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-
-            <p><strong>Total: ${bst}</strong></p>
             `;
             container.appendChild(card);
         });

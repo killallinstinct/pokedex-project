@@ -24,18 +24,6 @@ body {
     margin: 5px 0;
 }
 
-.type-badge {
-    display: inline-block;
-    background-color: white;
-    color: black;
-    padding: 2px 6px;
-    margin-right: 5px;
-    border-radius: 8px;
-    font-size: 12px;
-    font-weight: bold;
-    box-shadow: 0 0 2px rgba(0,0,0,0.2);
-}
-
 .stats-table {
     width: 100%;
     border-collapse: collapse;
@@ -95,6 +83,29 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: stretch;
     gap: 20px;
     padding: 20px;
+}
+
+.infobox {
+    background-color: white;
+    border-radius: 12px;
+    padding: 16px;
+    width: 100%;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.15);
+    text-align: left;
+}
+
+.infobox-header {
+    color: white;
+    padding: 6px 10px;
+    border-radius: 8px 8px 0 0;
+    font-size: 18px;
+    text-align: center;
+    margin: -16px -16px 12px -16px; /* edge to edge inside infobox */
+}
+
+.info-row {
+    margin: 4px 0;
 }
