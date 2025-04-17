@@ -33,6 +33,17 @@
         "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png"
     },
     {
+        "num": 25,
+        "name": "Pikachu",
+        "id": "pikachu",
+        "types": ["Electric"],
+        "heightm": 0.4,
+        "weightkg": 6,
+        "baseStats" : {"hp": 35, "atk": 55, "def": 40, "spa": 50, "spd": 50, "spe": 90},
+        "abilities": {"0": "Static", "H": "Lightning Rod"},
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
+    },
+    {
         "num": 184,
         "name": "Azumarill",
         "id": "azumarill",
@@ -44,6 +55,17 @@
         "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/184.png"
     },
     {
+        "num": 242,
+        "name": "Blissey",
+        "id": "blissey",
+        "types": ["Normal"],
+        "heightm": 1.5,
+        "weightkg": 46.8,
+        "baseStats" : {"hp": 255, "atk": 10, "def": 10, "spa": 75, "spd": 135, "spe": 55},
+        "abilities": {"0": "Natural Cure", "1": "Serene Grace", "H": "Healer"},
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/242.png"
+    },
+    {
         "num": 901,
         "name": "Ursaluna",
         "id": "ursaluna",
@@ -53,5 +75,16 @@
         "baseStats": {"hp": 130,"atk": 140,"def": 105,"spa": 45,"spd": 80,"spe": 50},
         "abilities": {"0": "Guts", "1": "Bulletproof", "H": "Unnerve"},
         "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/901.png"
+    },
+    {
+        "num": 1000,
+        "name": "Gholdengo",
+        "id": "gholdengo",
+        "types": ["Steel", "Ghost"],
+        "heightm": 1.2,
+        "weightkg": 30,
+        "baseStats" : {"hp": 87, "atk": 60, "def": 95, "spa": 133, "spd": 91, "spe": 84},
+        "abilities": {"0": "Good As Gold"},
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1000.png"
     }
 ]
