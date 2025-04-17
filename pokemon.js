@@ -1,3 +1,6 @@
+import { renderTypeBadges } from "./renderTypeBadges.js";
+import { typeColors } from "./typeColors.js";
+
 const params = new URLSearchParams(window.location.search);
 const pokemonID = params.get('id'); // example: "ursaluna"
 
@@ -29,6 +32,13 @@ async function displayPokemon() {
         document.getElementById('pokemon-name').textContent = 
             `${pokemon.name.toUpperCase()} (#${pokemon.id.toString().padStart(4, '0')})`;
 
+        // Dynamically builds type badges
+        const typeHTML = renderTypeBadges(pokemon.types);
+
+        // Creates visual for pokemon card dynamically based on primary type
+        const primaryType = pokemon.types[0].type.name;
+        const bgColor = typeColors[primaryType] || '#777';
+
         const container = document.getElementById('pokemon-details');
 
         // Finds English flavor text
@@ -37,31 +47,43 @@ async function displayPokemon() {
         );
 
         container.innerHTML = `
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png" alt="${pokemon.name}" />
-            
-            <h3>Type</h3>
-            <p>${pokemon.types.map(t => t.type.name).join(' / ')}</p>
-            
-            <h3>Abilities</h3>
-            <div class ="abilities-grid">
-                ${pokemon.abilities.map(a => 
-                    `<div class="ability-card ${a.ability.name}${a.is_hidden ? 'hidden-ability' : ''}">
-                        ${a.ability.name}${a.is_hidden ? ' (Hidden Ability)' : ''}
+            <div class="pokemon-card" style="background-color: ${bgColor}">
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png" alt="${pokemon.name}" />
+                
+                <h3><strong>Type</strong></h3>
+                    <div class="info-section">
+                        ${typeHTML}
                     </div>
-                `).join('')}
+                
+                <h3><strong>Abilities</strong></h3>
+                <div class="info-section">
+                    <div class ="abilities-grid">
+                        ${pokemon.abilities.map(a => `
+                            <div class="ability-card ${a.is_hidden ? 'hidden-ability' : ''}">
+                                ${a.ability.name}${a.is_hidden ? ' (Hidden Ability)' : ''}
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+                
+                <div class="info-section">
+                    <h3>Height / Weight</h3>
+                    <p>Height: ${(pokemon.height / 10).toFixed(1)} m</p>
+                    <p>Weight: ${(pokemon.weight / 10).toFixed(1)} kg</p>
+                </div>
+                
+                <div class="info-section">
+                    <h3>Base Stats</h3>
+                    <ul>
+                        ${pokemon.stats.map(s => `<li>${s.stat.name.toUpperCase()}: ${s.base_stat}</li>`).join('')}
+                    </ul>
+                </div>
+                
+                <div class="info-section">
+                    <h3>Flavor Text</h3>
+                    <p>${flavorEntry ? flavorEntry.flavor_text.replace(/\f|\n/g, ' ') : "No description available."}</p>
+                </div>
             </div>
-            
-            <h3>Height / Weight</h3>
-            <p>Height: ${(pokemon.height / 10).toFixed(1)} m</p>
-            <p>Weight: ${(pokemon.weight / 10).toFixed(1)} kg</p>
-            
-            <h3>Base Stats</h3>
-            <ul>
-                ${pokemon.stats.map(s => `<li>${s.stat.name.toUpperCase()}: ${s.base_stat}</li>`).join('')}
-            </ul>
-
-            <h3>Flavor Text</h3>
-            <p>${flavorEntry ? flavorEntry.flavor_text.replace(/\f|\n/g, ' ') : "No description available."}</p>
         `;
     }
     catch (error) {
@@ -71,3 +93,7 @@ async function displayPokemon() {
 }
 
 displayPokemon();
+
+document.getElementById('back-button').addEventListener('click', () => {
+    window.location.href = 'index.html';
+});
