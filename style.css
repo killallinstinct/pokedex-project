@@ -109,3 +109,37 @@ body {
 .info-row {
     margin: 4px 0;
 }
+
+.abilities-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.ability {
+    background-color: #f2f2f2;
+    border-radius: 6px;
+    padding: 4px 8px;
+    font-size: 13px;
+    text-align: left;
+    flex-grow: 1;
+    min-width: 100px;
+    word-wrap: break-word;
+  }
+  
+  .normal-ability {
+    text-align: left;
+  }
+  
+  .hidden-ability {
+    text-align: right;
+    font-weight: bold;
+  }
+  
+  .sub-label {
+    display: block;
+    font-size: 11px;
+    font-weight: normal;
+    color: #666;
+  }

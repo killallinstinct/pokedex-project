@@ -5,11 +5,20 @@ export function formatAbilities(abilities) {
     const entries = Object.entries(abilities);
     const label = entries.length > 1 ? "Abilities" : "Ability";
 
-    const formatted = entries
-        .map(([key, ability]) =>
-        key === "H" ? `${ability} (Hidden)` : ability
-    )
-    .join(", ");
-
-    return `<p>${label}: ${formatted}</p>`;
+    const formatted = `
+        <div class="abilities-grid">
+        ${entries
+            .map(([key, ability]) =>
+            key === "H"
+                ? `<div class="ability hidden-ability">${ability}<br><span class="sub-label">(Hidden Ability)</span></div>`
+                : `<div class="ability normal-ability">${ability}</div>`
+            )
+            .join("")}
+        </div>
+    `;
+        
+    return `
+        <div class="section-title">${label}</div>
+        <div class="info-section">${formatted}</div>
+        `;
 }
