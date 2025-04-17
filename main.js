@@ -1,6 +1,6 @@
 import { calculateBST, formatAbilities } from "./utils.js";
 import { typeColors } from "./typeColors.js";
-import { renderTypeBadges } from "./renderTypeBadge.js";
+import { renderTypeBadges } from "./renderTypeBadges.js";
 
 fetch("pokemon.json")
     .then((res) => res.json())
